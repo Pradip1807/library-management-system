@@ -11,7 +11,7 @@
 
 	<properties>
 		<java.version>17</java.version>
-		<spring-boot.version>2.7.6</spring-boot.version>
+		<spring-boot.version>3.1.0</spring-boot.version> <!-- Verify this version -->
 	</properties>
 
 	<dependencies>
@@ -41,6 +41,11 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
