@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Library Management System</title>
+</head>
+<body>
+<h1>Library Management System</h1>
+<h2>Book List</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.isBorrowed() ? 'Borrowed' : 'Available'}"></td>
+        <td>
+            <a th:href="@{/books/{id}/borrow(id=${book.id})}" th:if="${!book.isBorrowed()}">Borrow</a>
+            <a th:href="@{/books/{id}/return(id=${book.id})}" th:if="${book.isBorrowed()}">Return</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Add New Book</h2>
+<form th:action="@{/books}" th:object="${newBook}" method="post">
+    <input type="text" th:field="*{title}" placeholder="Title" required/>
+    <input type="text" th:field="*{author}" placeholder="Author" required/>
+    <button type="submit">Add Book</button>
+</form>
+</body>
+</html>
